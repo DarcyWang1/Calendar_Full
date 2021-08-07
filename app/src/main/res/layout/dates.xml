@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="69dp">
+            <Spinner
+                    android:layout_width="226dp"
+                    android:layout_height="match_parent" android:id="@+id/datesMonth"/>
+            <EditText
+                    android:text=""
+                    android:layout_width="187dp"
+                    android:layout_height="match_parent" android:id="@+id/datesYear"
+                    android:inputType="number"
+            />
+        </LinearLayout>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="39dp" android:id="@+id/datesSelectTimetable"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="390dp"
+                android:id="@+id/datesMainLayout"
+        >
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <Button
+                    android:text="Managetimetable"
+                    android:layout_width="178dp"
+                    android:layout_height="wrap_content" android:id="@+id/datesManagetimetable"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="Manageholiday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/datesManageholiday" android:layout_weight="1"/>
+            <Button
+                    android:text="save"
+                    android:layout_width="59dp"
+                    android:layout_height="wrap_content" android:id="@+id/datessave" android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

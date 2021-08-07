@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" tools:layout_editor_absoluteY="219dp"
+            tools:layout_editor_absoluteX="161dp">
+        <EditText
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="90dp" android:id="@+id/holidayditalname"
+                android:inputType="text"
+        />
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="47dp" android:id="@+id/holidayditalmonth"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="214dp">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="207dp"
+                    android:layout_height="match_parent">
+                <EditText
+                        android:text=""
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp" android:id="@+id/holidayditalsimpledate"
+                        android:inputType="number"
+                />
+                <Button
+                        android:text="Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/button"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <EditText
+                        android:text=""
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/holidayditalspecialindex"
+                        android:inputType="number"/>
+                <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/holidayditalspecialdow"/>
+                <Button
+                        android:text="Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/button2"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <Button
+                    android:text="back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="116dp" android:id="@+id/holidayditalback" android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

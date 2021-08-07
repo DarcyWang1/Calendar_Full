@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" tools:layout_editor_absoluteY="307dp"
+            tools:layout_editor_absoluteX="197dp">
+        <EditText
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:id="@+id/eventditalname"
+                android:inputType="text"
+        />
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                    android:id="@+id/eventditalstartyear"
+                    android:layout_width="158dp"
+                    android:layout_height="match_parent"
+                    android:inputType="number"/>
+            <Spinner
+                    android:id="@+id/eventditalstartmonth"
+                    android:layout_width="127dp"
+                    android:layout_height="match_parent"
+            />
+            <EditText
+                    android:id="@+id/eventditalstartday"
+                    android:layout_width="128dp"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+            />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="54dp">
+            <EditText
+                    android:id="@+id/eventditalstarthour"
+                    android:layout_width="206dp"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+            />
+
+            <EditText
+                    android:id="@+id/eventditalstartminute"
+                    android:layout_width="206dp"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+            />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                    android:id="@+id/eventditalendyear"
+                    android:layout_width="158dp"
+                    android:layout_height="match_parent"
+                    android:inputType="number"/>
+            <Spinner
+                    android:id="@+id/eventditalendmonth"
+                    android:layout_width="127dp"
+                    android:layout_height="match_parent"
+            />
+            <EditText
+                    android:id="@+id/eventditalendday"
+                    android:layout_width="126dp"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+            />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="54dp">
+            <EditText
+                    android:id="@+id/eventditalendhour"
+                    android:layout_width="206dp"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+            />
+
+            <EditText
+                    android:id="@+id/eventditalendminute"
+                    android:layout_width="206dp"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+            />
+        </LinearLayout>
+        <EditText
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="222dp"
+                android:id="@+id/eventditalnote"
+                android:inputType="text"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+            <Button
+                    android:text="back"
+                    android:layout_width="218dp"
+                    android:layout_height="match_parent" android:id="@+id/eventditalback"/>
+            <Button
+                    android:text="Modify"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp" android:id="@+id/eventditalmodify" android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

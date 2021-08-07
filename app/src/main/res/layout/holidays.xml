@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:text="             HOLIDAYS"
+                android:layout_width="416dp"
+                android:layout_height="76dp" android:id="@+id/textView" android:textSize="36sp"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="418dp"
+                android:layout_height="477dp"
+                android:id="@+id/holidaysMainLayout"
+        >
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <Button
+                    android:text="back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="110dp" android:id="@+id/holidaysBack" android:layout_weight="1"/>
+            <Button
+                    android:text="add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="108dp" android:id="@+id/holidaysAdd" android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
