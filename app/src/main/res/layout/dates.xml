@@ -37,7 +37,7 @@
                 android:layout_height="match_parent">
             <Button
                     android:text="Manageholiday"
-                    android:layout_width="82dp"
+                    android:layout_width="121dp"
                     android:layout_height="wrap_content" android:id="@+id/datesManageholiday"
                     android:layout_weight="1"/>
             <Button
