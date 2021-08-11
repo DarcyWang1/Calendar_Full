@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -21,7 +22,6 @@ import java.util.HashMap;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class MainActivity extends AppCompatActivity {
     public Manager manager;
-    public int adfajffer;
     //protected ImageView[][] a;
     public int timeTableDisplay;
     public static int screenWidth=900;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             monthToInt.put(monthes[i],i+1);
         }
         setUpDates(yearDisplay,monthDisplay,900,900);
-        adfajffer=1;
+
     }
 
     protected void setUpDates(int year, int m, int width, int hight){
@@ -270,26 +270,30 @@ public class MainActivity extends AppCompatActivity {
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int startYear = Integer.parseInt(ditalstartyear.getText().toString());
-                int endYear=Integer.parseInt(ditalendyear.getText().toString());
-                int startMonth = monthToInt.get(ditalstartmonth.getSelectedItem().toString());
-                int endMonth = monthToInt.get(ditalendmonth.getSelectedItem().toString());
-                int startDate = Integer.parseInt(ditalstartdate.getText().toString());
-                int endDate = Integer.parseInt(ditalenddate.getText().toString());
-                int startHour = Integer.parseInt(ditalstarthour.getText().toString());
-                int endHour = Integer.parseInt(ditalendhour.getText().toString());
-                int startMinute = Integer.parseInt(ditalstartminute.getText().toString());
-                int endMinute = Integer.parseInt(ditalendminute.getText().toString());
+                try {
+                    int startYear = Integer.parseInt(ditalstartyear.getText().toString());
+                    int endYear = Integer.parseInt(ditalendyear.getText().toString());
+                    int startMonth = monthToInt.get(ditalstartmonth.getSelectedItem().toString());
+                    int endMonth = monthToInt.get(ditalendmonth.getSelectedItem().toString());
+                    int startDate = Integer.parseInt(ditalstartdate.getText().toString());
+                    int endDate = Integer.parseInt(ditalenddate.getText().toString());
+                    int startHour = Integer.parseInt(ditalstarthour.getText().toString());
+                    int endHour = Integer.parseInt(ditalendhour.getText().toString());
+                    int startMinute = Integer.parseInt(ditalstartminute.getText().toString());
+                    int endMinute = Integer.parseInt(ditalendminute.getText().toString());
 
-                if(id==-1){
-                    manager.addEvent(timeTableDisplay,LocalDateTime.of(startYear,startMonth,startDate,startHour,startMinute),
-                            LocalDateTime.of(endYear,endMonth,endDate,endHour,endMinute),ditalname.getText().toString(),ditalnote.getText().toString());
-                }else{
-                    manager.fixEvent(timeTableDisplay,id,LocalDateTime.of(startYear,startMonth,startDate,startHour,startMinute),
-                            LocalDateTime.of(endYear,endMonth,endDate,endHour,endMinute),ditalname.getText().toString(),ditalnote.getText().toString());
+                    if (id == -1) {
+                        manager.addEvent(timeTableDisplay, LocalDateTime.of(startYear, startMonth, startDate, startHour, startMinute),
+                                LocalDateTime.of(endYear, endMonth, endDate, endHour, endMinute), ditalname.getText().toString(), ditalnote.getText().toString());
+                    } else {
+                        manager.fixEvent(timeTableDisplay, id, LocalDateTime.of(startYear, startMonth, startDate, startHour, startMinute),
+                                LocalDateTime.of(endYear, endMonth, endDate, endHour, endMinute), ditalname.getText().toString(), ditalnote.getText().toString());
+                    }
+                    //modify.setText(""+LocalDateTime.of(endYear,endMonth,endDate,endHour,endMinute));
+                    setUpEventPage(start.toLocalDate());
+                }catch (DateTimeException e){
+
                 }
-                //modify.setText(""+LocalDateTime.of(endYear,endMonth,endDate,endHour,endMinute));
-                setUpEventPage(start.toLocalDate());
             }
         });
     }
