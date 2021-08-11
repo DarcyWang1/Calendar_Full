@@ -125,7 +125,11 @@ public class MainActivity extends AppCompatActivity {
         String[] tNames= tn.toArray(new String[tn.size()]);
         Integer[] timetableIndex = ind.toArray(new Integer[ind.size()]);
         ArrayAdapter<String> timetableNames= new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,tNames);
+
         selectTimeTable.setAdapter(timetableNames);
+        if(ind.contains(timeTableDisplay)){
+            selectTimeTable.setSelection(ind.indexOf(timeTableDisplay));
+        }
         selectTimeTable.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
