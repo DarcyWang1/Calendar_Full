@@ -299,6 +299,27 @@ public class MainActivity extends AppCompatActivity {
     public void SetUPAddEventPage(LocalDate date){
         SetUPEventDetailPage("","",date.atStartOfDay(), date.atStartOfDay(), -1);
     }
+    public void setUpHolidayPage(LocalDate localDate){
+        setContentView(R.layout.holidays);
+        LinearLayout hl = findViewById(R.id.holidaysMainLayout);
+        Button back = findViewById(R.id.holidaysBack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setUpDates(yearDisplay,monthDisplay,900,900);
+            }
+        });
+        Button add = findViewById(R.id.holidaysAdd);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SetUpAddHolidayPage(localDate);
+            }
+        });
+    }
+    public void SetUpAddHolidayPage(LocalDate localDate){
+        SetUpHolidayDetailPage("","",localDate.atStartOfDay(), localDate.atStartOfDay(), -1);
+    }
     public void setUpTimeTablePage(){
         setContentView(R.layout.timetables);
         HashMap<Integer,String> timeTables= manager.getTimeTableNames();
