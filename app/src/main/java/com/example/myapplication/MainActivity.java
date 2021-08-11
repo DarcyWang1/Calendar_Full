@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -24,44 +25,15 @@ public class MainActivity extends AppCompatActivity {
     //protected ImageView[][] a;
     public int timeTableDisplay;
     public static int screenWidth=900;
-    public static int screenHight=1200;
+    public static int screenHight=900;
     public int yearDisplay;
     public int monthDisplay;
     public String[] monthes = new String[]{"Jan","Feb","Mar","Apr","May","Jun","July","Aug","Sept","Oct","Nov","Dec"};
     public static HashMap<String, Integer> monthToInt=new HashMap<String,Integer>();
-    //protected Button[][] dates={
-     //       {findViewById(R.id.button01),findViewById(R.id.button02),findViewById(R.id.button03),findViewById(R.id.button04),findViewById(R.id.button05),findViewById(R.id.button06),findViewById(R.id.button07)},
-    //        {findViewById(R.id.button11),findViewById(R.id.button12),findViewById(R.id.button13),findViewById(R.id.button14),findViewById(R.id.button15),findViewById(R.id.button16),findViewById(R.id.button17)},
-    //        {findViewById(R.id.button21),findViewById(R.id.button22),findViewById(R.id.button23),findViewById(R.id.button24),findViewById(R.id.button25),findViewById(R.id.button26),findViewById(R.id.button27)},
-     //       {findViewById(R.id.button31),findViewById(R.id.button32),findViewById(R.id.button33),findViewById(R.id.button34),findViewById(R.id.button35),findViewById(R.id.button36),findViewById(R.id.button37)},
-     //       {findViewById(R.id.button41),findViewById(R.id.button42),findViewById(R.id.button43),findViewById(R.id.button44),findViewById(R.id.button45),findViewById(R.id.button46),findViewById(R.id.button47)},
-     //       {findViewById(R.id.button51),findViewById(R.id.button52),findViewById(R.id.button53),findViewById(R.id.button54),findViewById(R.id.button55),findViewById(R.id.button56),findViewById(R.id.button57)}
 
-    //};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.test);
-        //this.manager=new Manager();
-        //Button b = new Button(this);
-        //b.setLayoutParams(new ViewGroup.LayoutParams(50,50));
-        //LinearLayout l = findViewById(R.id.linearLayout1);
-        //l.addView(b);
-
-        //b.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        setContentView(R.layout.test);
-        //        Button c = findViewById(R.id.button01);//new Button(this);
-                //c.setLayoutParams(new ViewGroup.LayoutParams(50,50));
-         //       c.setOnClickListener(new View.OnClickListener() {
-         //           @Override
-          //          public void onClick(View view) {
-          //              setContentView(R.layout.activity_main);
-          //          }
-          //      });
-          //  }
-        //});
         manager=new Manager(this.getFilesDir()+"/");
         timeTableDisplay=-1;
         yearDisplay=LocalDate.now().getYear();
@@ -70,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             monthToInt.put(monthes[i],i+1);
         }
         setUpDates(yearDisplay,monthDisplay,900,900);
+
     }
 
     protected void setUpDates(int year, int m, int width, int hight){
@@ -168,17 +141,22 @@ public class MainActivity extends AppCompatActivity {
                 manager.save();
             }
         });
-        manageHoliday.setOnClickListener(new View.OnClickListener() {
+        //manageHoliday.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+         //       setUpCommingSoon();
+           // }
+        //});
+        manageHoliday.setAlpha(0);
+        manageHoliday.setActivated(false);
+    }
+    public void setUpCommingSoon(){
+        setContentView(R.layout.commingsoon);
+        Button comingsoonback = findViewById(R.id.comingsoonback);
+        comingsoonback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.commingsoon);
-                Button comingsoonback = findViewById(R.id.comingsoonback);
-                comingsoonback.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        setUpDates(year,m,width,hight);
-                    }
-                });
+                setUpDates(yearDisplay,monthDisplay,900,900);
             }
         });
     }
@@ -278,26 +256,30 @@ public class MainActivity extends AppCompatActivity {
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int startYear = Integer.parseInt(ditalstartyear.getText().toString());
-                int endYear=Integer.parseInt(ditalendyear.getText().toString());
-                int startMonth = monthToInt.get(ditalstartmonth.getSelectedItem().toString());
-                int endMonth = monthToInt.get(ditalendmonth.getSelectedItem().toString());
-                int startDate = Integer.parseInt(ditalstartdate.getText().toString());
-                int endDate = Integer.parseInt(ditalenddate.getText().toString());
-                int startHour = Integer.parseInt(ditalstarthour.getText().toString());
-                int endHour = Integer.parseInt(ditalendhour.getText().toString());
-                int startMinute = Integer.parseInt(ditalstartminute.getText().toString());
-                int endMinute = Integer.parseInt(ditalendminute.getText().toString());
+                try {
+                    int startYear = Integer.parseInt(ditalstartyear.getText().toString());
+                    int endYear = Integer.parseInt(ditalendyear.getText().toString());
+                    int startMonth = monthToInt.get(ditalstartmonth.getSelectedItem().toString());
+                    int endMonth = monthToInt.get(ditalendmonth.getSelectedItem().toString());
+                    int startDate = Integer.parseInt(ditalstartdate.getText().toString());
+                    int endDate = Integer.parseInt(ditalenddate.getText().toString());
+                    int startHour = Integer.parseInt(ditalstarthour.getText().toString());
+                    int endHour = Integer.parseInt(ditalendhour.getText().toString());
+                    int startMinute = Integer.parseInt(ditalstartminute.getText().toString());
+                    int endMinute = Integer.parseInt(ditalendminute.getText().toString());
 
-                if(id==-1){
-                    manager.addEvent(timeTableDisplay,LocalDateTime.of(startYear,startMonth,startDate,startHour,startMinute),
-                            LocalDateTime.of(endYear,endMonth,endDate,endHour,endMinute),ditalname.getText().toString(),ditalnote.getText().toString());
-                }else{
-                    manager.fixEvent(timeTableDisplay,id,LocalDateTime.of(startYear,startMonth,startDate,startHour,startMinute),
-                            LocalDateTime.of(endYear,endMonth,endDate,endHour,endMinute),ditalname.getText().toString(),ditalnote.getText().toString());
+                    if (id == -1) {
+                        manager.addEvent(timeTableDisplay, LocalDateTime.of(startYear, startMonth, startDate, startHour, startMinute),
+                                LocalDateTime.of(endYear, endMonth, endDate, endHour, endMinute), ditalname.getText().toString(), ditalnote.getText().toString());
+                    } else {
+                        manager.fixEvent(timeTableDisplay, id, LocalDateTime.of(startYear, startMonth, startDate, startHour, startMinute),
+                                LocalDateTime.of(endYear, endMonth, endDate, endHour, endMinute), ditalname.getText().toString(), ditalnote.getText().toString());
+                    }
+                    //modify.setText(""+LocalDateTime.of(endYear,endMonth,endDate,endHour,endMinute));
+                    setUpEventPage(start.toLocalDate());
+                }catch (DateTimeException e){
+
                 }
-                //modify.setText(""+LocalDateTime.of(endYear,endMonth,endDate,endHour,endMinute));
-                setUpEventPage(start.toLocalDate());
             }
         });
     }

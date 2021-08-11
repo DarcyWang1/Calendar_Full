@@ -36,18 +36,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             <Button
-                    android:text="Managetimetable"
-                    android:layout_width="178dp"
-                    android:layout_height="wrap_content" android:id="@+id/datesManagetimetable"
+                    android:text="Manageholiday"
+                    android:layout_width="82dp"
+                    android:layout_height="wrap_content" android:id="@+id/datesManageholiday"
                     android:layout_weight="1"/>
             <Button
-                    android:text="Manageholiday"
+                    android:text="Manage timetable"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/datesManageholiday" android:layout_weight="1"/>
+                    android:layout_height="63dp" android:id="@+id/datesManagetimetable"
+                    android:layout_weight="1"/>
             <Button
                     android:text="save"
                     android:layout_width="59dp"
-                    android:layout_height="wrap_content" android:id="@+id/datessave" android:layout_weight="1"/>
+                    android:layout_height="64dp" android:id="@+id/datessave" android:layout_weight="1"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
