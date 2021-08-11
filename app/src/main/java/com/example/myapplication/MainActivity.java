@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
           //      });
           //  }
         //});
-        manager=new Manager();
+        manager=new Manager(this.getFilesDir()+"/");
         timeTableDisplay=-1;
         yearDisplay=LocalDate.now().getYear();
         monthDisplay=LocalDate.now().getMonthValue();
@@ -174,6 +174,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                manager.save();
             }
         });
     }
@@ -318,7 +324,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void SetUpAddHolidayPage(LocalDate localDate){
-        SetUpHolidayDetailPage("","",localDate.atStartOfDay(), localDate.atStartOfDay(), -1);
+        SetUpHolidayDetailPage();
+    }
+    public void SetUpHolidayDetailPage(){
+
     }
     public void setUpTimeTablePage(){
         setContentView(R.layout.timetables);

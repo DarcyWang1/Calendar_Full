@@ -9,14 +9,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HolidayManager {
-    public static final String holidayFolder="";
+    public static final String holidayFile="holiday";
     protected HashMap<Integer,holiday> holidays;
-    public HolidayManager(){
-        ArrayList<holiday> a = dataHelper.readAll(HolidayManager.holidayFolder);
-        this.holidays=new HashMap<Integer, holiday>();
-        for(holiday h:a){
-            this.holidays.put(h.getId(),h);
+    public String dataFolder;
+    public HolidayManager(String dataFolder){
+        this.dataFolder=dataFolder;
+        holidays=dataHelper.read(dataFolder,holidayFile);
+        if(holidays==null){
+            holidays=new HashMap<Integer,holiday>();
         }
+        //ArrayList<holiday> a = dataHelper.readAll(HolidayManager.holidayFolder);
+        //this.holidays=new HashMap<Integer, holiday>();
+        //for(holiday h:a){
+        //    this.holidays.put(h.getId(),h);
+        //}
     }
     public HolidayManager(ArrayList<holiday> input){
         this.holidays=new HashMap<Integer, holiday>();
@@ -88,6 +94,6 @@ public class HolidayManager {
         return result;
     }
     public void saveToFile(){
-        dataHelper.writeToFile(holidayFolder,holidays);
+        dataHelper.writeToFile(dataFolder,holidayFile,holidays);
     }
 }

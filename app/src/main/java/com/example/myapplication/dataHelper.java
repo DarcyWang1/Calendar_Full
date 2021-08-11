@@ -3,8 +3,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class dataHelper {
-    public static void writeToFile(String direction, java.io.Serializable input){
-        String path = "../data/"+direction+".txt";
+    public static void writeToFile(String folder,String direction, java.io.Serializable input){
+        String path = folder+direction+".txt";
         try {
             File fil = new File(path);
             fil.createNewFile();
@@ -17,8 +17,8 @@ public class dataHelper {
             e.printStackTrace();
         }
     }
-    public static <T> T read(String direction){
-        String path = "../data/"+direction+".txt";
+    public static <T> T read(String folder,String direction){
+        String path = folder+direction+".txt";
         try {
             FileInputStream file = new FileInputStream(new File(path));
             ObjectInputStream object = new ObjectInputStream(file);
@@ -55,7 +55,7 @@ public class dataHelper {
         delateAll(direction);
         int a = Math.min(name.size(),input.size());
         for(int i=0; i<a;i++){
-            writeToFile(direction+"/"+name.get(i),input.get(i));
+            //writeToFile(direction+"/"+name.get(i),input.get(i));
         }
     }
     public static boolean delateData(String direction){

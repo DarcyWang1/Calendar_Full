@@ -13,11 +13,11 @@ public class Manager {
     private TimeTableManager timeTableManager;
     //private int timetableDisplay =-1;
 
-    public Manager(){
+    public Manager(String dataFile){
         //ArrayList<holiday> a = dataHelper.readAll(HolidayManager.holidayFolder);
         //ArrayList<TimeTable> b = dataHelper.readAll(TimeTableManager.timeTableFolder);
-        holidayManager = new HolidayManager();
-        timeTableManager = new TimeTableManager();
+        holidayManager = new HolidayManager(dataFile);
+        timeTableManager = new TimeTableManager(dataFile);
     }
     public HashMap<java.time.LocalDate,ArrayList<HashMap<String,Object>>> eventsInfoOnMonth(int timetableDisplay,int year, java.time.Month m){
         if(timetableDisplay !=-1) {
