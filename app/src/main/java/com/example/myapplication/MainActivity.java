@@ -75,20 +75,6 @@ public class MainActivity extends AppCompatActivity {
     protected void setUpDates(int year, int m, int width, int hight){
         setContentView(R.layout.dates);
         LinearLayout l =findViewById(R.id.datesMainLayout);
-        //Button bb = new Button(this);
-        //bb.setLayoutParams(new ViewGroup.LayoutParams(width/7,hight/6));
-        //b.setOnClickListener(new View.OnClickListener() {
-        //   @Override
-        //    public void onClick(View view) {
-        //       setUpEventPage(start.plusDays(finalI *7+ finalJ));
-        //   }
-        //});
-        //l.addView(bb);
-        //TableLayout t = new TableLayout(this);
-        //t.setLayoutParams(new ViewGroup.LayoutParams(width,hight));
-
-
-        //l.addView(t);
         ViewGroup.LayoutParams tableRowSize = new ViewGroup.LayoutParams(width, hight/6);
         //HashMap<Button, LocalDate> result = new HashMap<Button,LocalDate>();
         LocalDate a = LocalDate.of(year,m,1);
