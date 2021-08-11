@@ -5,22 +5,31 @@ import java.util.ArrayList;
 public class dataHelper {
     public static void writeToFile(String folder,String direction, java.io.Serializable input){
         String path = folder+direction+".txt";
+        //System.out.println(path);
         try {
+            //new File(folder+direction).createNewFile();
             File fil = new File(path);
             fil.createNewFile();
+            //System.out.println(fil.exists());
             FileOutputStream file = new FileOutputStream(fil);
             ObjectOutputStream object = new ObjectOutputStream(file);
             object.writeObject(input);
             object.close();
             file.close();
+            //System.out.println("successed:"+path);
+            File f = new File(path);
+            //System.out.println(f.length());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public static <T> T read(String folder,String direction){
         String path = folder+direction+".txt";
+        //System.out.println(path);
+        File fil = new File(path);
+        //System.out.println(fil.length());
         try {
-            FileInputStream file = new FileInputStream(new File(path));
+            FileInputStream file = new FileInputStream(fil);
             ObjectInputStream object = new ObjectInputStream(file);
             T o = (T)object.readObject();
             object.close();

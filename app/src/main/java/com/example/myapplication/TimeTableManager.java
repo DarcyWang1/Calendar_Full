@@ -13,6 +13,7 @@ public class TimeTableManager {
     public String dataFile;
     //public static TimeTable current;
     public TimeTableManager(String dataFile){
+        this.dataFile=dataFile;
         allTimeTables=dataHelper.read(dataFile,timeTableFile);
         if(allTimeTables==null){
             allTimeTables=new HashMap<Integer,TimeTable>();
