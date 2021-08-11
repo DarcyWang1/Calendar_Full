@@ -182,6 +182,19 @@ public class MainActivity extends AppCompatActivity {
                 manager.save();
             }
         });
+        manageHoliday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.commingsoon);
+                Button comingsoonback = findViewById(R.id.comingsoonback);
+                comingsoonback.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        setUpDates(year,m,width,hight);
+                    }
+                });
+            }
+        });
     }
     public void setUpEventPage(LocalDate d){
         setContentView(R.layout.eventendate);
