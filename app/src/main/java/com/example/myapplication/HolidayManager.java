@@ -14,15 +14,10 @@ public class HolidayManager {
     public String dataFolder;
     public HolidayManager(String dataFolder){
         this.dataFolder=dataFolder;
-        holidays=dataHelper.read(dataFolder,holidayFile);
+        holidays= DataAccess.read(dataFolder,holidayFile);
         if(holidays==null){
             holidays=new HashMap<Integer,holiday>();
         }
-        //ArrayList<holiday> a = dataHelper.readAll(HolidayManager.holidayFolder);
-        //this.holidays=new HashMap<Integer, holiday>();
-        //for(holiday h:a){
-        //    this.holidays.put(h.getId(),h);
-        //}
     }
     public HolidayManager(ArrayList<holiday> input){
         this.holidays=new HashMap<Integer, holiday>();
@@ -94,6 +89,6 @@ public class HolidayManager {
         return result;
     }
     public void saveToFile(){
-        dataHelper.writeToFile(dataFolder,holidayFile,holidays);
+        DataAccess.writeToFile(dataFolder,holidayFile,holidays);
     }
 }

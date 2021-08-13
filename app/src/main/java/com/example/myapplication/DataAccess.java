@@ -2,7 +2,7 @@ package com.example.myapplication;
 import java.io.*;
 import java.util.ArrayList;
 
-public class dataHelper {
+public class DataAccess {
     public static void writeToFile(String folder,String direction, java.io.Serializable input){
         String path = folder+direction+".txt";
         //System.out.println(path);
@@ -40,8 +40,9 @@ public class dataHelper {
         }
         return null;
     }
-    public static <T> ArrayList<T> readAll(String direction){
-        String path = "../data/"+direction;
+    //the following methods might be useful in later versions
+    public static <T> ArrayList<T> readAll(String folder,String direction){
+        String path = folder+direction;
         File[] files = new File(path).listFiles();
         ArrayList<T> result = new ArrayList<T>();
         if(files!=null) {
@@ -60,20 +61,20 @@ public class dataHelper {
         }
         return result;
     }
-    public static void saveAll(String direction, ArrayList<String> name, ArrayList<java.io.Serializable> input){
-        delateAll(direction);
+    public static void saveAll(String folder,String direction, ArrayList<String> name, ArrayList<java.io.Serializable> input){
+        delateAll(folder,direction);
         int a = Math.min(name.size(),input.size());
         for(int i=0; i<a;i++){
-            //writeToFile(direction+"/"+name.get(i),input.get(i));
+            writeToFile(folder,direction+"/"+name.get(i),input.get(i));
         }
     }
-    public static boolean delateData(String direction){
-        String path = "../data/"+direction;
+    public static boolean delateData(String folder,String direction){
+        String path = folder+direction;
         File f = new File(path);
         return f.delete();
     }
-    public static void delateAll(String direction){
-        String path = "../data/"+direction;
+    public static void delateAll(String folder,String direction){
+        String path = folder+direction;
         File[] files = new File(path).listFiles();
         ArrayList<String> result = new ArrayList<String>();
         if(files!=null) {

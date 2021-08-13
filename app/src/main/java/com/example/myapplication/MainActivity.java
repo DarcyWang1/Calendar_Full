@@ -24,7 +24,6 @@ import java.util.HashMap;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class MainActivity extends AppCompatActivity {
     public Manager manager;
-    //protected ImageView[][] a;
     public int timeTableDisplay;
     public static int screenWidth=900;
     public static int screenHight=900;
@@ -35,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //set up the manager and variables
         super.onCreate(savedInstanceState);
         manager=new Manager(this.getFilesDir()+"/");
         timeTableDisplay=-1;
@@ -48,16 +48,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void setUpDates(int year, int m, int width, int hight){
+
         setContentView(R.layout.dates);
         LinearLayout l =findViewById(R.id.datesMainLayout);
         ViewGroup.LayoutParams tableRowSize = new ViewGroup.LayoutParams(width, hight/6);
-        //HashMap<Button, LocalDate> result = new HashMap<Button,LocalDate>();
         LocalDate a = LocalDate.of(year,m,1);
         LocalDate start = a.minusDays(a.getDayOfWeek().getValue()%7);
-        //Date start = new Date(year-1900,1,1);
+        //set the button for each day from the sunday of the first week of the month to the saturday of the last week of  the month
         for(int i=0; i<6;i++){
-            //TableRow c = new TableRow(this);
-            //c.setLayoutParams(tableRowSize);
             LinearLayout c = new LinearLayout(this);
             c.setLayoutParams(tableRowSize);
             c.setOrientation(LinearLayout.HORIZONTAL);
@@ -77,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
             l.addView(c);
         }
+        // allow the suer to change the year and month and timetable shown
         EditText y=findViewById(R.id.datesYear);
         Spinner month = findViewById(R.id.datesMonth);
         Button manageHoliday = findViewById(R.id.datesManageholiday);
@@ -147,12 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 manager.save();
             }
         });
-        //manageHoliday.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-         //       setUpCommingSoon();
-           // }
-        //});
+        //we will finish this latter on
         manageHoliday.setAlpha(0);
         manageHoliday.setActivated(false);
     }
@@ -170,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.eventendate);
         LinearLayout l = findViewById(R.id.eventondateMainLayout);
         ArrayList<HashMap<String,Object>> eventInfo = manager.eventsInfoOnDate(timeTableDisplay,d);
+        // display events of the day d one in a row and put a button to remove it behind it
         if(eventInfo.size()>0) {
             for (HashMap<String, Object> info : eventInfo) {
                 LinearLayout c = new LinearLayout(this);
@@ -205,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
                 l.addView(c);
             }
         }
+        //set up back button
         Button back = findViewById(R.id.eventondateback);
-        //back.setText(""+eventInfo.size());
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -222,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void SetUPEventDetailPage(String name, String text, LocalDateTime start, LocalDateTime end, int id){
+        //link all input from the page
         setContentView(R.layout.eventdital);
         EditText ditalname=findViewById(R.id.eventditalname);
         ditalname.setText(name);
@@ -247,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
         ditalendminute.setText(""+end.getMinute(), TextView.BufferType.EDITABLE);
         Button back = findViewById(R.id.eventditalback);
         Button modify =findViewById(R.id.eventditalmodify);
-
+        //set up the buttons and inputs
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -262,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //try to create an event out of the inputs and ignore illegal inputs
                 try {
                     int startYear = Integer.parseInt(ditalstartyear.getText().toString());
                     int endYear = Integer.parseInt(ditalendyear.getText().toString());
@@ -320,6 +317,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.timetables);
         HashMap<Integer,String> timeTables= manager.getTimeTableNames();
         LinearLayout mainlayout = findViewById(R.id.timetablesmainlayout);
+        //add an edit test for the name for each timetable and allow the user to change it, then add a button on the right to delete it
         for(int i :timeTables.keySet()){
             EditText name = new EditText(this);
             name.setText(timeTables.get(i));
@@ -351,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
             l.addView(b,1);
             mainlayout.addView(l);
         }
+        //allow the user to create new timetable
         EditText name = new EditText(this);
         name.setLayoutParams(new ViewGroup.LayoutParams(screenWidth*3/4,100));
         Button b =new Button(this);
@@ -372,6 +371,7 @@ public class MainActivity extends AppCompatActivity {
         l.addView(name);
         l.addView(b,1);
         mainlayout.addView(l);
+        //set up back button
         Button back = findViewById(R.id.timetablesback);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

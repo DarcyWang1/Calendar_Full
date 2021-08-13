@@ -5,7 +5,7 @@ import androidx.annotation.RequiresApi;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class TimeTableManager {
     public static final String timeTableFile="timetable";
@@ -14,7 +14,7 @@ public class TimeTableManager {
     //public static TimeTable current;
     public TimeTableManager(String dataFile){
         this.dataFile=dataFile;
-        allTimeTables=dataHelper.read(dataFile,timeTableFile);
+        allTimeTables= DataAccess.read(dataFile,timeTableFile);
         if(allTimeTables==null){
             allTimeTables=new HashMap<Integer,TimeTable>();
         }
@@ -67,7 +67,7 @@ public class TimeTableManager {
         return new HashMap<java.time.LocalDate,ArrayList<HashMap<String,Object>>>();
     }
     public void saveToFile(){
-        dataHelper.writeToFile(dataFile,timeTableFile,allTimeTables);
+        DataAccess.writeToFile(dataFile,timeTableFile,allTimeTables);
         //ArrayList<String> timeTableName = new ArrayList<String>();
         //ArrayList<java.io.Serializable> input = new ArrayList<java.io.Serializable>();
         //for(int i: this.allTimeTables.keySet()){

@@ -8,6 +8,9 @@ public class event implements java.io.Serializable{
     private int id;
     private String name;
     private String text;
+    /*
+    *
+     */
     public event(java.time.LocalDateTime startTime,java.time.LocalDateTime endTime,int id,String name,String text){
         this.startTime=startTime;
         this.endTime=endTime;
